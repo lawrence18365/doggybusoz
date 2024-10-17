@@ -146,7 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-  const floatingPaws = document.querySelector('.floating-paws');
+   const floatingPaws = document.querySelector('.floating-paws');
         const pawEmoji = '🐾';
         const numberOfPaws = 20;
 
