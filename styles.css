@@ -226,7 +226,7 @@
         }
 /* Hero Section */
  .hero {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(255, 160, 0, 0.8)), url('https://images.unsplash.com/photo-1560743641-3914f2c45636?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(255, 160, 0, 0.8)), url('https://cdn-uploads.huggingface.co/production/uploads/noauth/SdUz37qzqhH61ayrsbInY.webp') center/cover no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
