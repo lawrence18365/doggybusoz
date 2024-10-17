@@ -1198,7 +1198,8 @@
         }
 
 /* CTA Section */
-.cta-section {
+
+        .cta-section {
             padding: 100px 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             position: relative;
