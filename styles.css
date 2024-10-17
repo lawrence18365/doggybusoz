@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 /* Global Styles */
-        :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #FFA000;
-            --accent-color: #FF6B6B;
-            --text-color: #333333;
-            --white: #FFFFFF;
-            --light-gray: #F5F5F5;
-        }
+       :root {
+    --primary-color: #000000; /* Changed to black */
+    --secondary-color: #FFD700; /* Changed to yellow */
+    --accent-color: #FFD700; /* Changed to yellow */
+    --text-color: #333333;
+    --white: #FFFFFF;
+    --light-gray: #F5F5F5;
+}
 
         * {
             margin: 0;
@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif; /* Applied Montserrat font */
             color: var(--text-color);
         }
 
@@ -53,7 +53,7 @@
         }
 
         .logo h1 {
-            font-family: 'Pacifico', cursive;
+                font-family: 'Montserrat', sans-serif; /* Applied Montserrat font */
             font-size: 2rem;
             color: var(--white);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -109,6 +109,7 @@
             font-weight: 600;
             padding: 10px 15px;
             transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
         }
 
         .nav-link:hover, .nav-link.active {
@@ -153,6 +154,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: 'Montserrat', sans-serif;
         }
 
         .cta-button:hover {
@@ -227,9 +229,7 @@
         }
 /* Hero Section */
  .hero {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(255, 160, 0, 0.8)), url('https://cdn-uploads.huggingface.co/production/uploads/noauth/SdUz37qzqhH61ayrsbInY.webp') center/cover no-repeat;
-            height: 100vh;
-            display: flex;
+                background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(255, 215, 0, 0.8)), url('https://cdn-uploads.huggingface.co/production/uploads/noauth/SdUz37qzqhH61ayrsbInY.webp') center/cover no-repeat;
             align-items: center;
             justify-content: center;
             position: relative;
@@ -251,7 +251,144 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: fadeInDown 1s ease-out;
         }
+.hero h1, .hero p {
+    font-family: 'Montserrat', sans-serif;
+}
+/* Services Section */
+.service-card {
+    font-family: 'Montserrat', sans-serif;
+}
 
+.service-icon {
+    color: var(--secondary-color);
+}
+
+.service-title {
+    color: var(--primary-color);
+}
+
+.service-cta {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.service-cta:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Why Choose Us Section */
+.why-choose-us {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.reason-card {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.reason-icon {
+    color: var(--primary-color);
+}
+
+/* Testimonials Section */
+.testimonial-card {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.testimonial-content::before,
+.testimonial-content::after {
+    color: var(--secondary-color);
+}
+
+.client-details h4 {
+    color: var(--primary-color);
+}
+
+.client-details p {
+    color: var(--secondary-color);
+}
+
+.control-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.control-btn:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* MAP Section */
+.section-title h2 {
+    color: var(--primary-color);
+}
+
+.section-title h2::after {
+    background-color: var(--secondary-color);
+}
+
+.area-list li::before {
+    color: var(--secondary-color);
+}
+
+/* FAQ Section */
+.faq-question:hover {
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+.faq-question.active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.search-icon {
+    color: var(--secondary-color);
+}
+
+.category-btn {
+    color: var(--primary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.category-btn:hover, .category-btn.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.cta-button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.secondary-cta {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+footer nav ul li a {
+    color: var(--secondary-color);
+}
+
+#newsletter-signup button {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* Ensure all text elements use Montserrat font */
+h1, h2, h3, h4, h5, h6, p, a, li, button, input, textarea {
+    font-family: 'Montserrat', sans-serif;
+}
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
