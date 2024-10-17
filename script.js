@@ -33,6 +33,18 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.transform = 'translateY(0) scale(1)';
         });
     });
+//Service Area
+  const checkAreaButton = document.querySelector('.cta-button');
+            checkAreaButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const userPostcode = prompt("Please enter your postcode to check if we service your area:");
+                if (userPostcode) {
+                    // Here you would typically make an API call to check the postcode
+                    // For this example, we'll just show an alert
+                    alert(`Thank you! We'll check if we cover the area with postcode ${userPostcode} and get back to you soon.`);
+                }
+            });
+        });
 
     // Testimonial carousel
     const carousel = document.querySelector('.testimonial-carousel');
