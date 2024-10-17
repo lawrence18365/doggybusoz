@@ -33,4 +33,53 @@ document.addEventListener('DOMContentLoaded', function() {
             card.style.transform = 'translateY(0) scale(1)';
         });
     });
+
+    // Testimonial carousel
+    const carousel = document.querySelector('.testimonial-carousel');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    let currentIndex = 0;
+    let autoScroll;
+
+    // Check if carousel elements exist before attaching events
+    if (carousel && cards.length && prevBtn && nextBtn) {
+
+        function showTestimonial(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        function nextTestimonial() {
+            currentIndex = (currentIndex + 1) % cards.length;
+            showTestimonial(currentIndex);
+        }
+
+        function prevTestimonial() {
+            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+            showTestimonial(currentIndex);
+        }
+
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            resetAutoScroll();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            resetAutoScroll();
+        });
+
+        // Auto-scroll every 5 seconds
+        autoScroll = setInterval(nextTestimonial, 5000);
+
+        // Reset auto-scroll timer on button click
+        function resetAutoScroll() {
+            clearInterval(autoScroll);
+            autoScroll = setInterval(nextTestimonial, 5000);
+        }
+
+        // Pause auto-scroll on hover, resume on leave
+        carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
+        carousel.addEventListener('mouseleave', () => autoScroll = setInterval(nextTestimonial, 5000));
+    }
 });
