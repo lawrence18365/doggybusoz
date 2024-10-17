@@ -95,3 +95,54 @@ document.addEventListener('DOMContentLoaded', function() {
         carousel.addEventListener('mouseleave', () => autoScroll = setInterval(nextTestimonial, 5000));
     }
 });
+ const faqQuestions = document.querySelectorAll('.faq-question');
+        const searchInput = document.querySelector('.search-input');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                question.classList.toggle('active');
+                const answer = question.nextElementSibling;
+                if (question.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.padding = '20px';
+                } else {
+                    answer.style.maxHeight = 0;
+                    answer.style.padding = '0 20px';
+                }
+            });
+        });
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            faqQuestions.forEach(question => {
+                const item = question.closest('.faq-item');
+                const text = question.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const category = button.getAttribute('data-category');
+                filterFAQs(category);
+            });
+        });
+
+        function filterFAQs(category) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    });
