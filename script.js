@@ -146,3 +146,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+  const floatingPaws = document.querySelector('.floating-paws');
+        const pawEmoji = '🐾';
+        const numberOfPaws = 20;
+
+        for (let i = 0; i < numberOfPaws; i++) {
+            const paw = document.createElement('div');
+            paw.classList.add('paw');
+            paw.textContent = pawEmoji;
+            paw.style.left = `${Math.random() * 100}%`;
+            paw.style.top = `${Math.random() * 100}%`;
+            paw.style.animationDelay = `${Math.random() * 6}s`;
+            floatingPaws.appendChild(paw);
+        }
+
+        const ctaButtons = document.querySelectorAll('.cta-button, .secondary-cta');
+        ctaButtons.forEach(button => {
+            button.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            button.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    });
