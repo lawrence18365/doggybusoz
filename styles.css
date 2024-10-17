@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 /* Global Styles */
         :root {
             --primary-color: #4CAF50;
@@ -226,7 +227,7 @@
         }
 /* Hero Section */
  .hero {
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(255, 160, 0, 0.8)), url('https://cdn-uploads.huggingface.co/production/uploads/noauth/SdUz37qzqhH61ayrsbInY.webp') center/cover no-repeat;
+            background: url('https://cdn-uploads.huggingface.co/production/uploads/noauth/SdUz37qzqhH61ayrsbInY.webp') center/cover no-repeat;
             height: 100vh;
             display: flex;
             align-items: center;
