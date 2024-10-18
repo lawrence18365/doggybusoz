@@ -1,27 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Animate the bus driving up
+    // Animate the bus driving in from right to left
     gsap.to('.bus-svg', {
-        bottom: '0%',
+        right: '-20%',
         duration: 2,
         ease: "power2.out"
-    });
-
-    // Animate the dogs appearing and jumping
-    gsap.to('.dog', {
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.2,
-        delay: 1.5
-    });
-
-    gsap.to('.dog', {
-        y: -20,
-        duration: 0.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-        stagger: 0.2,
-        delay: 2
     });
 
     // Animate hero content
@@ -48,13 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', () => {
     const scrollPosition = window.pageYOffset;
     const bus = document.querySelector('.bus-svg');
-    const dogs = document.querySelectorAll('.dog');
     
     if (bus) {
-        bus.style.transform = `translateY(${scrollPosition * 0.05}px)`;
+        bus.style.transform = `translateY(-50%) translateX(${scrollPosition * 0.05}px)`;
     }
-    
-    dogs.forEach((dog, index) => {
-        dog.style.transform = `translateY(${scrollPosition * (0.02 + index * 0.01)}px)`;
-    });
 });
