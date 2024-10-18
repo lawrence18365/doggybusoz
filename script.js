@@ -35,16 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Animate bus
-    gsap.fromTo('#bus-image', {
-        x: '100vw',
-        opacity: 0
-    }, {
-        duration: 3,
-        x: '0%',
-        opacity: 1,
-        ease: 'power2.out',
-        delay: 1
-    });
+    const busAnimation = gsap.timeline({ repeat: -1 });
+    busAnimation
+        .fromTo('#bus-image', {
+            x: '100vw',
+            opacity: 0
+        }, {
+            duration: 3,
+            x: '0%',
+            opacity: 1,
+            ease: 'power2.out'
+        })
+        .to('#bus-image', {
+            duration: 3,
+            x: '-100vw',
+            ease: 'power2.in',
+            delay: 1
+        });
 
     // Scroll indicator animation
     gsap.to('.scroll-indicator', {
@@ -61,12 +68,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Custom cursor effect
     const cursor = document.querySelector('.custom-cursor');
-
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-
     document.addEventListener('mousedown', () => cursor.classList.add('expand'));
     document.addEventListener('mouseup', () => cursor.classList.remove('expand'));
+
+    // Mobile-specific adjustments
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Adjust bus animation for mobile
+        busAnimation.clear();
+        busAnimation
+            .fromTo('#bus-image', {
+                x: '100vw',
+                opacity: 0,
+                scale: 0.6
+            }, {
+                duration: 2,
+                x: '0%',
+                opacity: 1,
+                ease: 'power2.out'
+            })
+            .to('#bus-image', {
+                duration: 2,
+                x: '-100vw',
+                ease: 'power2.in',
+                delay: 0.5
+            });
+
+        // Adjust hero content animation for mobile
+        gsap.from('.hero-content > *', {
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power2.out'
+        });
+    }
 });
