@@ -33,22 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out',
         delay: 0.4
     });
-
-    // Animate bus
-    const busTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-    busTimeline.to('.bus-container', {
-        duration: 2,
-        x: '120%',
-        ease: 'power1.inOut'
-    }).to('.bus-container', {
-        duration: 0.5,
-        y: -10,
-        ease: 'power1.inOut'
-    }).to('.bus-container', {
-        duration: 0.5,
-        y: 0,
-        ease: 'bounce.out'
-    });
+// Animate bus
+const busTimeline = gsap.timeline();
+busTimeline.to('.bus-container', {
+    duration: 2,
+    x: '100vw', // Move the bus fully into view
+    ease: 'power1.inOut'
+}).to('.bus-container', {
+    duration: 0.5,
+    y: -10, // Small bounce effect when the bus stops
+    ease: 'power1.inOut'
+}).to('.bus-container', {
+    duration: 0.5,
+    y: 0,
+    ease: 'bounce.out'
+});
 
     // Animate paw prints
     const pawPrints = document.querySelectorAll('.paw-print');
