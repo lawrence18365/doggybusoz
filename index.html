@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doggy School Bus Oz | Premier Pet Care Services</title>
+    <!-- Fonts and Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap">
+    <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js" defer></script>
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <h1>DOGGY SCHOOL BUS OZ</h1>
             </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why-choose-us">Why Choose Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#service-area">Service Area</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
             <div class="header-cta">
                 <a href="tel:0490245735" class="phone-number">
                     <span class="phone-icon">📞</span>
@@ -29,36 +46,43 @@
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-background"></div>
-            <div class="container">
-                <div class="hero-content">
-                    <h2 class="hero-title">Your Pet's Home Away From Home</h2>
-                    <p class="hero-description">Experience premium pet care services tailored to your furry friend's needs. From walks to spa days, we've got your pet covered!</p>
-                    <div class="cta-buttons">
-                        <a href="#book-now" class="cta-button cta-primary">Book Now</a>
-                        <a href="#services" class="cta-button cta-secondary">Our Services</a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="bus-container">
-                        <img src="https://svgur.com/i/1Bdv.svg" alt="Doggy School Bus" class="bus-svg">
-                    </div>
-                    <div class="paw-prints">
-                        <span class="paw-print">🐾</span>
-                        <span class="paw-print">🐾</span>
-                        <span class="paw-print">🐾</span>
-                    </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Your Pet's Home Away From Home</h2>
+                <p class="hero-description">Experience premium pet care services tailored to your furry friend's needs. From walks to spa days, we've got your pet covered!</p>
+                <div class="cta-buttons">
+                    <a href="#book-now" class="cta-button cta-primary">Book Now</a>
+                    <a href="#services" class="cta-button cta-secondary">Our Services</a>
                 </div>
             </div>
-            <div class="scroll-indicator">
-                <span class="mouse">
-                    <span class="mouse-wheel"></span>
-                </span>
-                <p>Scroll to explore</p>
+            <div class="hero-visual">
+                <div class="bus-container">
+                    <!-- Inline SVG for direct manipulation -->
+                    <svg id="bus-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" aria-hidden="true" focusable="false">
+                        <!-- SVG content goes here -->
+                        <!-- For example purposes, I'm using a simple rectangle to represent the bus -->
+                        <rect width="200" height="100" x="0" y="50" fill="#FFD900" stroke="#333" stroke-width="5" rx="15" ry="15"/>
+                        <!-- Add wheels, windows, etc. -->
+                        <!-- You can replace this with your actual bus SVG -->
+                    </svg>
+                </div>
+                <div class="paw-prints">
+                    <span class="paw-print">🐾</span>
+                    <span class="paw-print">🐾</span>
+                    <span class="paw-print">🐾</span>
+                </div>
             </div>
-        </section>
+        </div>
+        <div class="scroll-indicator">
+            <span class="mouse">
+                <span class="mouse-wheel"></span>
+            </span>
+            <p>Scroll to explore</p>
+        </div>
+    </section>
          <section class="services-section">
         <div class="container">
             <div class="section-title">
