@@ -1,172 +1,55 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Toggle navigation menu
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-
-    // Add dropdown functionality for mobile
-    const dropdownItems = document.querySelectorAll('.nav-item');
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                const dropdown = this.querySelector('.dropdown');
-                if (dropdown) {
-                    dropdown.classList.toggle('active');
-                }
-            }
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate the bus
+    gsap.to('.bus-svg', {
+        x: 20,
+        y: -10,
+        rotation: 2,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
     });
 
-    // Animate reason cards
-    const reasonCards = document.querySelectorAll('.reason-card');
-    reasonCards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.05)';
-        });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
+    // Animate the dogs
+    gsap.to('.dog', {
+        y: -20,
+        duration: 0.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        stagger: 0.2
     });
-//Service Area
-  const checkAreaButton = document.querySelector('.cta-button');
-            checkAreaButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                const userPostcode = prompt("Please enter your postcode to check if we service your area:");
-                if (userPostcode) {
-                    // Here you would typically make an API call to check the postcode
-                    // For this example, we'll just show an alert
-                    alert(`Thank you! We'll check if we cover the area with postcode ${userPostcode} and get back to you soon.`);
-                }
-            });
-        });
 
-    // Testimonial carousel
-    const carousel = document.querySelector('.testimonial-carousel');
-    const cards = document.querySelectorAll('.testimonial-card');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    let currentIndex = 0;
-    let autoScroll;
+    // Animate hero content
+    gsap.from('.hero-content', {
+        opacity: 0,
+        x: -50,
+        duration: 1,
+        ease: "power2.out"
+    });
 
-    // Check if carousel elements exist before attaching events
-    if (carousel && cards.length && prevBtn && nextBtn) {
-
-        function showTestimonial(index) {
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-        }
-
-        function nextTestimonial() {
-            currentIndex = (currentIndex + 1) % cards.length;
-            showTestimonial(currentIndex);
-        }
-
-        function prevTestimonial() {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            showTestimonial(currentIndex);
-        }
-
-        nextBtn.addEventListener('click', () => {
-            nextTestimonial();
-            resetAutoScroll();
-        });
-
-        prevBtn.addEventListener('click', () => {
-            prevTestimonial();
-            resetAutoScroll();
-        });
-
-        // Auto-scroll every 5 seconds
-        autoScroll = setInterval(nextTestimonial, 5000);
-
-        // Reset auto-scroll timer on button click
-        function resetAutoScroll() {
-            clearInterval(autoScroll);
-            autoScroll = setInterval(nextTestimonial, 5000);
-        }
-
-        // Pause auto-scroll on hover, resume on leave
-        carousel.addEventListener('mouseenter', () => clearInterval(autoScroll));
-        carousel.addEventListener('mouseleave', () => autoScroll = setInterval(nextTestimonial, 5000));
-    }
+    // Animate CTA buttons
+    gsap.from('.cta-button', {
+        opacity: 0,
+        y: 20,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        stagger: 0.2,
+        delay: 0.5
+    });
 });
- const faqQuestions = document.querySelectorAll('.faq-question');
-        const searchInput = document.querySelector('.search-input');
-        const categoryButtons = document.querySelectorAll('.category-btn');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                question.classList.toggle('active');
-                const answer = question.nextElementSibling;
-                if (question.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                    answer.style.padding = '20px';
-                } else {
-                    answer.style.maxHeight = 0;
-                    answer.style.padding = '0 20px';
-                }
-            });
-        });
 
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            faqQuestions.forEach(question => {
-                const item = question.closest('.faq-item');
-                const text = question.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                categoryButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const category = button.getAttribute('data-category');
-                filterFAQs(category);
-            });
-        });
-
-        function filterFAQs(category) {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                if (category === 'all' || item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
+// Parallax effect on scroll
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.pageYOffset;
+    const bus = document.querySelector('.bus-svg');
+    const dogs = document.querySelectorAll('.dog');
+    
+    if (bus) {
+        bus.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+    }
+    
+    dogs.forEach((dog, index) => {
+        dog.style.transform = `translateY(${scrollPosition * (0.05 + index * 0.02)}px)`;
     });
-   const floatingPaws = document.querySelector('.floating-paws');
-        const pawEmoji = '🐾';
-        const numberOfPaws = 20;
-
-        for (let i = 0; i < numberOfPaws; i++) {
-            const paw = document.createElement('div');
-            paw.classList.add('paw');
-            paw.textContent = pawEmoji;
-            paw.style.left = `${Math.random() * 100}%`;
-            paw.style.top = `${Math.random() * 100}%`;
-            paw.style.animationDelay = `${Math.random() * 6}s`;
-            floatingPaws.appendChild(paw);
-        }
-
-        const ctaButtons = document.querySelectorAll('.cta-button, .secondary-cta');
-        ctaButtons.forEach(button => {
-            button.addEventListener('mouseover', function() {
-                this.style.transform = 'translateY(-5px) scale(1.05)';
-            });
-            button.addEventListener('mouseout', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    });
+});
