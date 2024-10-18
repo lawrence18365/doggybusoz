@@ -10,54 +10,78 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleClass: { className: 'header--scrolled', targets: header }
     });
 
-    // Animate hero content
-    gsap.from('.hero-title', {
-        duration: 1,
-        y: 50,
+    // Hero section animations
+    const heroTl = gsap.timeline();
+
+    // Animate hero background
+    heroTl.from('.hero-background', {
+        duration: 1.5,
         opacity: 0,
+        scale: 1.1,
         ease: 'power3.out'
     });
 
-    gsap.from('.hero-description', {
+    // Animate hero content
+    heroTl.from('.hero-title', {
         duration: 1,
         y: 50,
         opacity: 0,
-        ease: 'power3.out',
-        delay: 0.2
-    });
+        ease: 'back.out(1.7)'
+    }, '-=0.5');
 
-    gsap.from('.cta-buttons', {
+    heroTl.from('.hero-description', {
         duration: 1,
-        y: 50,
+        y: 30,
         opacity: 0,
-        ease: 'power3.out',
-        delay: 0.4
-    });
+        ease: 'power3.out'
+    }, '-=0.7');
+
+    heroTl.from('.cta-buttons .cta-button', {
+        duration: 0.8,
+        y: 20,
+        opacity: 0,
+        stagger: 0.2,
+        ease: 'power3.out'
+    }, '-=0.5');
 
     // Animate bus
-    const busAnimation = gsap.timeline({ repeat: -1 });
+    const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 1 });
     busAnimation
         .fromTo('#bus-image', {
             x: '100vw',
-            opacity: 0
+            y: '10vh',
+            opacity: 0,
+            scale: 0.8,
+            rotation: -5
         }, {
             duration: 3,
             x: '0%',
+            y: '0vh',
             opacity: 1,
+            scale: 1,
+            rotation: 0,
             ease: 'power2.out'
         })
         .to('#bus-image', {
+            duration: 0.5,
+            y: '-2vh',
+            yoyo: true,
+            repeat: 3,
+            ease: 'power1.inOut'
+        })
+        .to('#bus-image', {
             duration: 3,
-            x: '-100vw',
-            ease: 'power2.in',
-            delay: 1
+            x: '-120vw',
+            y: '5vh',
+            scale: 0.9,
+            rotation: 5,
+            ease: 'power2.in'
         });
 
-    // Scroll indicator animation
-    gsap.to('.scroll-indicator', {
-        y: 10,
-        opacity: 0,
-        ease: 'power1.inOut',
+    // Parallax effect for hero background
+    gsap.to('.hero-background', {
+        yPercent: 30,
+        ease: 'none',
         scrollTrigger: {
             trigger: '.hero',
             start: 'top top',
@@ -66,14 +90,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Scroll indicator animation
+    gsap.to('.scroll-indicator', {
+        y: 20,
+        opacity: 0,
+        ease: 'power2.in',
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: '25% top',
+            scrub: true
+        }
+    });
+
     // Custom cursor effect
     const cursor = document.querySelector('.custom-cursor');
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
+    const cursorCircle = document.querySelector('.cursor-circle');
+
+    gsap.set(cursorCircle, { xPercent: -50, yPercent: -50 });
+
+    window.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, { duration: 0.1, x: e.clientX, y: e.clientY });
+        gsap.to(cursorCircle, { duration: 0.5, x: e.clientX, y: e.clientY });
     });
-    document.addEventListener('mousedown', () => cursor.classList.add('expand'));
-    document.addEventListener('mouseup', () => cursor.classList.remove('expand'));
+
+    document.addEventListener('mousedown', () => {
+        gsap.to(cursor, { duration: 0.2, scale: 0.8 });
+        gsap.to(cursorCircle, { duration: 0.3, scale: 1.5, opacity: 0.2 });
+    });
+
+    document.addEventListener('mouseup', () => {
+        gsap.to(cursor, { duration: 0.2, scale: 1 });
+        gsap.to(cursorCircle, { duration: 0.3, scale: 1, opacity: 1 });
+    });
 
     // Mobile-specific adjustments
     const isMobile = window.innerWidth <= 768;
@@ -83,19 +132,33 @@ document.addEventListener('DOMContentLoaded', () => {
         busAnimation
             .fromTo('#bus-image', {
                 x: '100vw',
+                y: '5vh',
                 opacity: 0,
-                scale: 0.6
+                scale: 0.6,
+                rotation: -3
             }, {
                 duration: 2,
                 x: '0%',
+                y: '0vh',
                 opacity: 1,
+                scale: 0.8,
+                rotation: 0,
                 ease: 'power2.out'
             })
             .to('#bus-image', {
+                duration: 0.3,
+                y: '-1vh',
+                yoyo: true,
+                repeat: 2,
+                ease: 'power1.inOut'
+            })
+            .to('#bus-image', {
                 duration: 2,
-                x: '-100vw',
-                ease: 'power2.in',
-                delay: 0.5
+                x: '-110vw',
+                y: '3vh',
+                scale: 0.7,
+                rotation: 3,
+                ease: 'power2.in'
             });
 
         // Adjust hero content animation for mobile
