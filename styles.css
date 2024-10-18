@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-    --primary-color: #000000;
-    --secondary-color: #FFD700;
+    --primary-color: #FFD700;
+    --secondary-color: #000000;
+    --accent-color: #FF6B6B;
     --text-color: #333333;
     --white: #FFFFFF;
     --gray: #F5F5F5;
@@ -18,6 +19,7 @@ body {
     font-family: 'Poppins', sans-serif;
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 .container {
@@ -28,8 +30,8 @@ body {
 
 /* Header Styles */
 .header {
-    background-color: var(--primary-color);
-    padding: 20px 0;
+    background-color: var(--secondary-color);
+    padding: 15px 0;
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -42,13 +44,21 @@ body {
     align-items: center;
 }
 
-.logo-text {
-    color: var(--secondary-color);
-    font-size: 2rem;
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    margin-right: 10px;
+}
+
+.logo h1 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
+    letter-spacing: 1px;
 }
 
 .header-cta {
@@ -61,16 +71,23 @@ body {
     text-decoration: none;
     margin-right: 20px;
     font-weight: 600;
+    display: flex;
+    align-items: center;
     transition: all 0.3s ease;
 }
 
+.phone-number i {
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
 .phone-number:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .cta-button {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 12px 24px;
     border-radius: 50px;
     text-decoration: none;
@@ -82,15 +99,15 @@ body {
 
 .cta-button:hover {
     background-color: var(--white);
-    color: var(--primary-color);
+    color: var(--secondary-color);
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Hero Section Styles */
 .hero {
-    background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%), url('path-to-your-hero-image.jpg') center/cover no-repeat;
     height: 100vh;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, #333 100%);
     display: flex;
     align-items: center;
     position: relative;
@@ -98,131 +115,159 @@ body {
 }
 
 .hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+    max-width: 600px;
+    margin-left: 10%;
     color: var(--white);
     position: relative;
     z-index: 2;
-    padding: 0 20px;
 }
 
 .hero-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    animation: fadeInDown 1s ease-out;
+    line-height: 1.2;
+    animation: fadeInLeft 1s ease-out;
 }
 
 .hero-description {
     font-size: 1.2rem;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    animation: fadeInUp 1s ease-out 0.5s both;
+    animation: fadeInLeft 1s ease-out 0.5s both;
 }
 
 .cta-buttons {
     display: flex;
-    justify-content: center;
     gap: 20px;
     animation: fadeInUp 1s ease-out 1s both;
 }
 
 .cta-primary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
 }
 
 .cta-secondary {
     background-color: transparent;
-    border: 2px solid var(--white);
-    color: var(--white);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
 }
 
-.hero-image {
+.hero-visual {
     position: absolute;
-    right: -5%;
-    bottom: -10%;
-    width: 50%;
+    right: -100px;
+    bottom: 0;
+    width: 60%;
     height: 80%;
-    animation: float 6s ease-in-out infinite;
+    animation: slideInRight 1.5s ease-out;
 }
 
-.main-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.floating-elements img {
-    position: absolute;
-    opacity: 0.6;
-}
-
-.paw-print-1 {
-    top: 10%;
-    left: 10%;
-    animation: float 4s ease-in-out infinite;
-}
-
-.paw-print-2 {
-    top: 40%;
-    right: 15%;
-    animation: float 5s ease-in-out infinite 1s;
-}
-
-.paw-print-3 {
-    bottom: 20%;
-    left: 5%;
-    animation: float 4.5s ease-in-out infinite 0.5s;
-}
-
-.hero-services {
+.school-bus {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    right: 50px;
+    width: 300px;
+    height: 200px;
+    animation: busMove 3s ease-in-out infinite;
+}
+
+.bus-body {
+    width: 100%;
+    height: 120px;
+    background-color: var(--primary-color);
+    border-radius: 20px 20px 0 0;
+    position: relative;
+}
+
+.bus-window {
+    width: 80px;
+    height: 60px;
+    background-color: #87CEEB;
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.bus-wheel {
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -25px;
+}
+
+.front-wheel {
+    left: 30px;
+}
+
+.back-wheel {
+    right: 30px;
+}
+
+.dog {
+    width: 80px;
+    height: 80px;
+    background-color: #8B4513;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+}
+
+.dog-1 {
+    bottom: 100px;
+    right: 30px;
+    animation: dogJump 2s ease-in-out infinite;
+}
+
+.dog-2 {
+    bottom: 120px;
+    right: 120px;
+    animation: dogJump 2s ease-in-out infinite 0.5s;
+}
+
+.dog-3 {
+    bottom: 140px;
+    right: 210px;
+    animation: dogJump 2s ease-in-out infinite 1s;
+}
+
+/* Services Section */
+.services {
     display: flex;
     justify-content: space-around;
-    padding: 20px 0;
-    animation: slideInUp 1s ease-out;
+    padding: 50px 0;
+    background-color: var(--white);
 }
 
 .service-item {
     text-align: center;
-    color: var(--white);
     transition: all 0.3s ease;
 }
 
 .service-item i {
-    font-size: 2rem;
-    margin-bottom: 10px;
-    color: var(--secondary-color);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
 }
 
 .service-item span {
-    display: block;
     font-weight: 600;
+    color: var(--secondary-color);
 }
 
 .service-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes fadeInDown {
+/* Animations */
+@keyframes fadeInLeft {
     from {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0);
     }
 }
 
@@ -237,40 +282,76 @@ body {
     }
 }
 
-@keyframes slideInUp {
+@keyframes slideInRight {
     from {
-        transform: translateY(100%);
+        transform: translateX(100%);
     }
     to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes busMove {
+    0%, 100% {
         transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes dogJump {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
     }
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content {
+        margin-left: 5%;
+    }
+
+    .hero-visual {
+        width: 50%;
+    }
+}
+
 @media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem;
-    }
-
-    .hero-description {
-        font-size: 1rem;
-    }
-
-    .cta-buttons {
+    .hero {
         flex-direction: column;
+        justify-content: center;
     }
 
-    .hero-image {
-        display: none;
+    .hero-content {
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 20px;
     }
 
-    .hero-services {
+    .hero-visual {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        right: 0;
+        margin-top: 50px;
+    }
+
+    .school-bus {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    .services {
         flex-wrap: wrap;
     }
 
     .service-item {
         flex-basis: 50%;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 }
 /* Services Section */
