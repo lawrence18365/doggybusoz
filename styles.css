@@ -2,7 +2,8 @@
 
 :root {
     --primary-color: #FFD900;
-    --secondary-color: #FF6B6B;
+    --secondary-color: #1A1A1A;
+    --accent-color: #FF6B6B;
     --text-color: #FFFFFF;
     --background-color: #1A1A1A;
 }
@@ -67,8 +68,8 @@ body {
 }
 
 .cta-button {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 10px 20px;
     border-radius: 50px;
     text-decoration: none;
@@ -79,22 +80,38 @@ body {
 
 .cta-button:hover {
     background-color: transparent;
-    border-color: var(--secondary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
     transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 217, 0, 0.3);
 }
 
 /* Hero Section Styles */
 .hero {
-    padding: 150px 0 50px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(26,26,26,0.9) 0%, rgba(26,26,26,0.7) 100%);
+    z-index: 1;
 }
 
 .hero .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
@@ -120,7 +137,7 @@ body {
 
 .cta-primary {
     background-color: var(--primary-color);
-    color: var(--background-color);
+    color: var(--secondary-color);
 }
 
 .cta-secondary {
@@ -139,7 +156,7 @@ body {
     width: 100%;
     height: auto;
     position: absolute;
-    bottom: 0;
+    bottom: -100%;
     right: -50px;
     filter: drop-shadow(0 10px 20px rgba(255, 217, 0, 0.3));
 }
@@ -151,6 +168,7 @@ body {
     border-radius: 50% 50% 0 0;
     position: absolute;
     bottom: 80px;
+    opacity: 0;
 }
 
 .dog::before {
@@ -164,30 +182,11 @@ body {
     left: 15px;
 }
 
-.dog-1 { right: 50px; animation: dogJump 2s ease-in-out infinite; }
-.dog-2 { right: 120px; animation: dogJump 2s ease-in-out infinite 0.5s; }
-.dog-3 { right: 190px; animation: dogJump 2s ease-in-out infinite 1s; }
-
-@keyframes dogJump {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .hero-content {
-        max-width: 60%;
-    }
-    .hero-visual {
-        width: 40%;
-    }
-}
+.dog-1 { right: 50px; }
+.dog-2 { right: 120px; }
+.dog-3 { right: 190px; }
 
 @media (max-width: 768px) {
-    .header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
     .hero .container {
         flex-direction: column;
     }
@@ -200,15 +199,6 @@ body {
     }
     .bus-svg {
         right: 0;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h2 {
-        font-size: 2.5rem;
-    }
-    .cta-buttons {
-        flex-direction: column;
     }
 }
 /* Services Section */
