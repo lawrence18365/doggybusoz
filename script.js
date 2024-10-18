@@ -171,3 +171,73 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const heroBus = document.getElementById('hero-bus');
+  const heroContent = document.querySelector('.hero-content');
+  
+  // Parallax effect for bus
+  window.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX / window.innerWidth;
+    const mouseY = e.clientY / window.innerHeight;
+    
+    gsap.to(heroBus, {
+      duration: 1,
+      x: mouseX * 20,
+      y: mouseY * 20,
+      ease: 'power2.out'
+    });
+  });
+
+  // Scroll-triggered animations
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.to(heroContent, {
+    y: 100,
+    opacity: 0,
+    ease: 'power2.in',
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  });
+
+  gsap.to(heroBus, {
+    y: -100,
+    opacity: 0,
+    ease: 'power2.in',
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true
+    }
+  });
+
+  // Intersection Observer for scroll indicator
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        scrollIndicator.style.opacity = '0';
+      } else {
+        scrollIndicator.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(document.querySelector('.hero'));
+
+  // Enhance buttons with hover effect
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', () => {
+      gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+    });
+    button.addEventListener('mouseleave', () => {
+      gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
+    });
+  });
+});
