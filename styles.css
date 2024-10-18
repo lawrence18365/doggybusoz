@@ -54,30 +54,10 @@ body {
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: var(--primary-color);
     letter-spacing: 1px;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style-type: none;
-}
-
-.main-nav ul li {
-    margin-left: 30px;
-}
-
-.main-nav ul li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.main-nav ul li a:hover {
-    color: var(--primary-color);
 }
 
 .header-cta {
@@ -122,22 +102,6 @@ body {
     box-shadow: 0 4px 10px rgba(255, 217, 0, 0.3);
 }
 
-.mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.mobile-menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px 0;
-    transition: all 0.3s ease;
-}
-
 /* Hero Section Styles */
 .hero {
     height: 100vh;
@@ -162,11 +126,11 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    z-index: 2;
 }
 
 .hero-content {
     max-width: 50%;
+    z-index: 2;
 }
 
 .hero-title {
@@ -202,37 +166,20 @@ body {
 .hero-visual {
     position: relative;
     width: 50%;
-    height: 400px;
+    height: 100%;
 }
 
 .bus-container {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    right: -100%;
-    overflow: visible;
-}
-
-#bus-svg {
-    width: 200px;
-    height: auto;
-    position: absolute;
     bottom: 0;
     right: 0;
-    filter: drop-shadow(0 10px 20px rgba(255, 217, 0, 0.3));
+    z-index: -1; /* Place it behind everything */
 }
 
-.paw-prints {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    width: 100%;
-}
-
-.paw-print {
-    font-size: 2rem;
-    position: absolute;
-    opacity: 0;
+#bus-image {
+    width: 250px; /* Adjust size as needed */
+    height: auto;
+    opacity: 0; /* Start hidden for animation */
 }
 
 .scroll-indicator {
@@ -269,44 +216,6 @@ body {
    100% { transform: translateX(-50%) translateY(15px); opacity: 0; }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .header .container {
-        flex-wrap: wrap;
-    }
-
-    .main-nav {
-        display: none;
-    }
-
-    .mobile-menu-toggle {
-        display: block;
-    }
-
-    .hero .container {
-        flex-direction: column;
-    }
-
-    .hero-content, .hero-visual {
-        max-width: 100%;
-        width: 100%;
-    }
-
-    .hero-content {
-        margin-bottom: 50px;
-    }
-
-    .bus-container {
-        position: relative;
-        width: 100%;
-        right: 0;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-    }
-}
-
 /* Custom Cursor */
 .custom-cursor {
     width: 20px;
@@ -324,6 +233,33 @@ body {
 .custom-cursor.expand {
     transform: translate(-50%, -50%) scale(1.5);
     background-color: rgba(255, 217, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero .container {
+        flex-direction: column;
+    }
+
+    .hero-content, .hero-visual {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-content {
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* Services Section */
