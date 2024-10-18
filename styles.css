@@ -732,8 +732,9 @@ body {
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s ease;
-            margin-top: 50px;
             text-align: center;
+             margin-top: -5%;
+
         }
 
         .cta-button:hover {
