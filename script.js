@@ -1,23 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Animate the bus
+    // Animate the bus driving up
     gsap.to('.bus-svg', {
-        x: 20,
-        y: -10,
-        rotation: 2,
+        bottom: '0%',
         duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut"
+        ease: "power2.out"
     });
 
-    // Animate the dogs
+    // Animate the dogs appearing and jumping
+    gsap.to('.dog', {
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.2,
+        delay: 1.5
+    });
+
     gsap.to('.dog', {
         y: -20,
         duration: 0.5,
         repeat: -1,
         yoyo: true,
         ease: "power1.inOut",
-        stagger: 0.2
+        stagger: 0.2,
+        delay: 2
     });
 
     // Animate hero content
@@ -25,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         x: -50,
         duration: 1,
+        delay: 0.5,
         ease: "power2.out"
     });
 
@@ -35,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         duration: 0.8,
         ease: "back.out(1.7)",
         stagger: 0.2,
-        delay: 0.5
+        delay: 1
     });
 });
 
@@ -46,10 +51,10 @@ window.addEventListener('scroll', () => {
     const dogs = document.querySelectorAll('.dog');
     
     if (bus) {
-        bus.style.transform = `translateY(${scrollPosition * 0.1}px)`;
+        bus.style.transform = `translateY(${scrollPosition * 0.05}px)`;
     }
     
     dogs.forEach((dog, index) => {
-        dog.style.transform = `translateY(${scrollPosition * (0.05 + index * 0.02)}px)`;
+        dog.style.transform = `translateY(${scrollPosition * (0.02 + index * 0.01)}px)`;
     });
 });
