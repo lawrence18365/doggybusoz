@@ -176,20 +176,19 @@ body {
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
 }
+#hero-bus {
+  position: absolute;
+  width: 200px; /* Adjust size as needed */
+  max-width: 100%;
+  bottom: 10%; /* Lower the bus */
+  right: 0;
+  transform: translateX(100%); /* Start off-screen */
+}
 
 .hero-visual {
   position: relative;
   width: 50%;
-  /* Remove overflow: hidden */
-}
-
-#hero-bus {
-  position: absolute;
-  width: 100%;
-  max-width: 400px;
-  bottom: 0;
-  right: 0; /* Change this from -420px to 0 */
-  transform: translateX(100%); /* Start off-screen */
+  overflow: visible; /* Allow bus to move outside */
 }
 .scroll-indicator {
   position: absolute;
