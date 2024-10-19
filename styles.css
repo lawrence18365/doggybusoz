@@ -481,6 +481,7 @@ border: 2px solid #FFD900; color: #FFD900;
 
         .section-title h2 {
             font-size: 2.5rem;
+            color: #333333;
             font-weight: 700;
             margin-bottom: 20px;
             position: relative;
@@ -760,24 +761,7 @@ filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
             margin-bottom: 50px;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
+       
 
         .service-area-content {
             display: flex;
