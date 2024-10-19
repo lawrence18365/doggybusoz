@@ -1094,10 +1094,10 @@ filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
         }
 
         .cta-button {
-            background-color: var(--accent-color);
-            color: var(--white);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
-            margin-top: 1%;
+             background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid #FFD900; color: #FFD900;s
+             margin-top: 1%;
         }
 
         .secondary-cta {
