@@ -209,39 +209,32 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded and parsed");
-    
     const busImage = document.getElementById('hero-bus');
-    console.log("Bus image element:", busImage);
-
+    
     if (busImage) {
-        const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+        const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
         
         busAnimation
+            // Enter from right
             .fromTo(busImage, {
-                x: '100%',
-                opacity: 0
+                x: 220 // Start off-screen (adjust if needed)
             }, {
-                duration: 2,
-                x: '0%',
-                opacity: 1,
-                ease: 'power2.out',
-                onStart: () => console.log("Animation started"),
-                onComplete: () => console.log("Animation completed")
+                duration: 4, // Slow entry
+                x: 0, // Current position
+                ease: 'power1.inOut',
+                onStart: () => console.log("Bus entering")
             })
-            .to(busImage, {
-                duration: 1,
-                y: '-10px',
-                yoyo: true,
-                repeat: 1,
-                ease: 'power1.inOut'
-            })
+            // Pause at current position
             .to(busImage, {
                 duration: 2,
-                x: '-100%',
-                opacity: 1,
-                ease: 'power2.in',
-                delay: 1
+                onComplete: () => console.log("Bus paused")
+            })
+            // Exit to left
+            .to(busImage, {
+                duration: 4, // Slow exit
+                x: -420, // Exit off-screen left (adjust if needed)
+                ease: 'power1.inOut',
+                onComplete: () => console.log("Bus exiting")
             });
     } else {
         console.error("Bus image element not found");
