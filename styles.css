@@ -122,6 +122,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 2; /* Ensure hero content is above the bus */
 }
 
 .hero-content {
@@ -176,6 +177,12 @@ body {
   color: var(--primary-color);
   border: 2px solid var(--primary-color);
 }
+.hero-visual {
+  position: relative;
+  width: 100%; /* Make it full width */
+  overflow: visible;
+}
+
 #hero-bus {
   position: absolute;
   width: 200px; /* Adjust size as needed */
@@ -183,12 +190,7 @@ body {
   bottom: 10%; /* Lower the bus */
   right: 0;
   transform: translateX(100%); /* Start off-screen */
-}
-
-.hero-visual {
-  position: relative;
-  width: 50%;
-  overflow: visible; /* Allow bus to move outside */
+  z-index: 1; /* Ensure bus is behind hero content */
 }
 .scroll-indicator {
   position: absolute;
