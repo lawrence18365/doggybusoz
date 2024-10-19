@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         busAnimation
             .to(busImage, {
                 duration: 5,
-                x: '0%', // Move to its original position
+                x: '20%', // Move to its original position
                 ease: 'power1.inOut',
                 onStart: () => console.log("Bus entering")
             })
