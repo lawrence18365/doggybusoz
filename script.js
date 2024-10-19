@@ -212,13 +212,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const busImage = document.getElementById('hero-bus');
     
     if (busImage) {
-        gsap.set(busImage, { x: '100%' }); // Start off-screen right
+        gsap.set(busImage, { x: '200%' }); // Start far off-screen right
         const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
         
         busAnimation
             .to(busImage, {
-                duration: 2,
-                x: '-50%',
+                duration: 4,
+                x: '0%', // Move to its original position
                 ease: 'power1.inOut',
                 onStart: () => console.log("Bus entering")
             })
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .to(busImage, {
                 duration: 4,
-                x: '-400%',
+                x: '-200%', // Move far off-screen left
                 ease: 'power1.inOut',
                 onComplete: () => console.log("Bus exiting")
             });
