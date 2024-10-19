@@ -37,7 +37,7 @@ body {
     position: fixed;
     width: 100%;
     z-index: 1000;
-    background-color: rgba(26, 26, 26, 0.9);
+    background: linear-gradient(180deg, #1A1A1A 0%, #333333 100%); 
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     padding: 20px 0;
