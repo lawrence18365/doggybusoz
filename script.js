@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         busAnimation
             .to(busImage, {
-                duration: 4,
-                x: '0%',
+                duration: 2,
+                x: '-50%',
                 ease: 'power1.inOut',
                 onStart: () => console.log("Bus entering")
             })
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .to(busImage, {
                 duration: 4,
-                x: '-100%',
+                x: '-400%',
                 ease: 'power1.inOut',
                 onComplete: () => console.log("Bus exiting")
             });
