@@ -732,20 +732,23 @@ border: 2px solid #FFD900; color: #FFD900;
 .testimonials-section .carousel-controls {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 30px;
+    gap: 20px;
 }
 
 .testimonials-section .control-btn {
-    color: var(--black);
-    border: none;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--primary-color);
-    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all 0.3s ease;
-    margin: 0 10px;
+    color: var(--secondary-color);
 }
 
 .testimonials-section .control-btn:hover {
@@ -753,22 +756,14 @@ border: 2px solid #FFD900; color: #FFD900;
     transform: scale(1.1);
 }
 
-.testimonials-section .testimonials-cta {
-    display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--black);
-    padding: 15px 30px;
-    border-radius: 50px;
-    transition: all 0.3s ease-in-out;
-    margin-top: 40px;
-    font-weight: bold;
-    text-decoration: none;
+.testimonials-section .control-btn i {
+    font-size: 18px;
 }
 
-.testimonials-section .testimonials-cta:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+/* Ensure Font Awesome icons are visible */
+.fas {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
 }
 
 @media screen and (max-width: 768px) {
