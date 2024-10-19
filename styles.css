@@ -175,20 +175,18 @@ body {
 }
 
 .hero-visual {
+  position: relative;
   width: 50%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  overflow: hidden;
 }
 
-.hero-bus {
+#hero-bus {
+  position: absolute;
   width: 100%;
   max-width: 400px;
-  opacity: 0;
-  transform: translateX(50px);
-  animation: fadeInRight 1s ease 0.6s forwards;
+  bottom: 0;
+  right: -420px; /* Start off-screen */
 }
-
 .scroll-indicator {
   position: absolute;
   bottom: 2rem;
