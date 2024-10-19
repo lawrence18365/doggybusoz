@@ -41,6 +41,9 @@ body {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     padding: 20px 0;
+    
+    /* Add dark shadow at the bottom */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8); /* Adjust the values to your preference */
 }
 
 .header--scrolled {
