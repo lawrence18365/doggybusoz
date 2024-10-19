@@ -45,37 +45,66 @@ document.addEventListener('DOMContentLoaded', () => {
     }, '-=0.5');
 
     // Animate bus
-    const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+   // Animate bus
+const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+busAnimation
+    .fromTo('#bus-image', {
+        x: '100vw',
+        opacity: 0,
+        scale: 0.8
+    }, {
+        duration: 2,
+        x: '0%',
+        opacity: 1,
+        scale: 1,
+        ease: 'power2.out'
+    })
+    .to('#bus-image', {
+        duration: 1,
+        y: '-5px',
+        yoyo: true,
+        repeat: 1,
+        ease: 'power1.inOut'
+    })
+    .to('#bus-image', {
+        duration: 2,
+        x: '-100vw',
+        opacity: 1,
+        scale: 0.8,
+        ease: 'power2.in',
+        delay: 1
+    });
+
+// Mobile-specific adjustments
+const isMobile = window.innerWidth <= 768;
+if (isMobile) {
+    busAnimation.clear();
     busAnimation
         .fromTo('#bus-image', {
             x: '100vw',
-            y: '10vh',
             opacity: 0,
-            scale: 0.8,
-            rotation: -5
+            scale: 0.6
         }, {
-            duration: 3,
+            duration: 2,
             x: '0%',
-            y: '0vh',
             opacity: 1,
-            scale: 1,
-            rotation: 0,
+            scale: 0.8,
             ease: 'power2.out'
         })
         .to('#bus-image', {
             duration: 0.5,
-            y: '-2vh',
+            y: '-3px',
             yoyo: true,
-            repeat: 3,
+            repeat: 1,
             ease: 'power1.inOut'
         })
         .to('#bus-image', {
-            duration: 3,
-            x: '-120vw',
-            y: '5vh',
-            scale: 0.9,
-            rotation: 5,
-            ease: 'power2.in'
+            duration: 2,
+            x: '-100vw',
+            opacity: 1,
+            scale: 0.6,
+            ease: 'power2.in',
+            delay: 1
         });
 
     // Parallax effect for hero background
