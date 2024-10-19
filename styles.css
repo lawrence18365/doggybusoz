@@ -106,7 +106,7 @@ body {
 }
 
 .hero {
-  background-color: var(--background-color);
+  background: linear-gradient(180deg, #333333 0%, #1A1A1A 100%); 
   min-height: 100vh;
   display: flex;
   align-items: center;
