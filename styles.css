@@ -540,23 +540,10 @@ filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
             opacity: 0.9;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-align: center;
-             margin-top: -5%;
-             background: linear-gradient(135deg, #FF6B6B 0%, #FF4D4D 100%);
-
-        }
 
         .cta-button:hover {
-            background-color: var(--white);
-            color: var(--accent-color);
+            background-color: var(--primary-color);
+            color: var(--black);
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transform: scale(1.05); transition: all 0.3s ease-in-out;
