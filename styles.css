@@ -72,7 +72,7 @@ body {
 .phone-number {
     display: flex;
     align-items: center;
-    color: var(--text-color);
+    color: #FFD900;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
