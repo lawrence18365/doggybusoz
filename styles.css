@@ -180,7 +180,7 @@ body {
 .hero-visual {
   position: relative;
   width: 50%;
-  overflow: hidden;
+  /* Remove overflow: hidden */
 }
 
 #hero-bus {
@@ -188,7 +188,8 @@ body {
   width: 100%;
   max-width: 400px;
   bottom: 0;
-  right: -420px; /* Start off-screen */
+  right: 0; /* Change this from -420px to 0 */
+  transform: translateX(100%); /* Start off-screen */
 }
 .scroll-indicator {
   position: absolute;
