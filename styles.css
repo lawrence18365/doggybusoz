@@ -275,6 +275,7 @@ border: 2px solid #FFD900; color: #FFD900;
     height: 150px; /* Adjust height for bus animation area */
     position: relative;
     overflow: hidden;
+    margin-top: 10%;
   }
 
   #hero-bus {
