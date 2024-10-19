@@ -44,68 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out'
     }, '-=0.5');
 
-    // Animate bus
-   // Animate bus
-const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
-busAnimation
-    .fromTo('#bus-image', {
-        x: '100vw',
-        opacity: 0,
-        scale: 0.8
-    }, {
-        duration: 2,
-        x: '0%',
-        opacity: 1,
-        scale: 1,
-        ease: 'power2.out'
-    })
-    .to('#bus-image', {
-        duration: 1,
-        y: '-5px',
-        yoyo: true,
-        repeat: 1,
-        ease: 'power1.inOut'
-    })
-    .to('#bus-image', {
-        duration: 2,
-        x: '-100vw',
-        opacity: 1,
-        scale: 0.8,
-        ease: 'power2.in',
-        delay: 1
-    });
-
-// Mobile-specific adjustments
-const isMobile = window.innerWidth <= 768;
-if (isMobile) {
-    busAnimation.clear();
-    busAnimation
-        .fromTo('#bus-image', {
-            x: '100vw',
-            opacity: 0,
-            scale: 0.6
-        }, {
-            duration: 2,
-            x: '0%',
-            opacity: 1,
-            scale: 0.8,
-            ease: 'power2.out'
-        })
-        .to('#bus-image', {
-            duration: 0.5,
-            y: '-3px',
-            yoyo: true,
-            repeat: 1,
-            ease: 'power1.inOut'
-        })
-        .to('#bus-image', {
-            duration: 2,
-            x: '-100vw',
-            opacity: 1,
-            scale: 0.6,
-            ease: 'power2.in',
-            delay: 1
-        });
 
     // Parallax effect for hero background
     gsap.to('.hero-background', {
@@ -269,4 +207,43 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
     });
   });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed");
+    
+    const busImage = document.getElementById('hero-bus');
+    console.log("Bus image element:", busImage);
+
+    if (busImage) {
+        const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 1 });
+        
+        busAnimation
+            .fromTo(busImage, {
+                x: '100%',
+                opacity: 0
+            }, {
+                duration: 2,
+                x: '0%',
+                opacity: 1,
+                ease: 'power2.out',
+                onStart: () => console.log("Animation started"),
+                onComplete: () => console.log("Animation completed")
+            })
+            .to(busImage, {
+                duration: 1,
+                y: '-10px',
+                yoyo: true,
+                repeat: 1,
+                ease: 'power1.inOut'
+            })
+            .to(busImage, {
+                duration: 2,
+                x: '-100%',
+                opacity: 1,
+                ease: 'power2.in',
+                delay: 1
+            });
+    } else {
+        console.error("Bus image element not found");
+    }
 });
