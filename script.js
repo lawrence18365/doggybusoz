@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ease: 'power3.out'
     }, '-=0.5');
 
-
     // Parallax effect for hero background
     gsap.to('.hero-background', {
         yPercent: 30,
@@ -91,127 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(cursorCircle, { duration: 0.3, scale: 1, opacity: 1 });
     });
 
-    // Mobile-specific adjustments
-    const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-        // Adjust bus animation for mobile
-        busAnimation.clear();
-        busAnimation
-            .fromTo('#bus-image', {
-                x: '100vw',
-                y: '5vh',
-                opacity: 0,
-                scale: 0.6,
-                rotation: -3
-            }, {
-                duration: 2,
-                x: '0%',
-                y: '0vh',
-                opacity: 1,
-                scale: 0.8,
-                rotation: 0,
-                ease: 'power2.out'
-            })
-            .to('#bus-image', {
-                duration: 0.3,
-                y: '-1vh',
-                yoyo: true,
-                repeat: 2,
-                ease: 'power1.inOut'
-            })
-            .to('#bus-image', {
-                duration: 2,
-                x: '-110vw',
-                y: '3vh',
-                scale: 0.7,
-                rotation: 3,
-                ease: 'power2.in'
-            });
-
-        // Adjust hero content animation for mobile
-        gsap.from('.hero-content > *', {
-            duration: 0.8,
-            y: 30,
-            opacity: 0,
-            stagger: 0.2,
-            ease: 'power2.out'
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const heroBus = document.getElementById('hero-bus');
-  const heroContent = document.querySelector('.hero-content');
-  
-  // Parallax effect for bus
-  window.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    gsap.to(heroBus, {
-      duration: 1,
-      x: mouseX * 20,
-      y: mouseY * 20,
-      ease: 'power2.out'
-    });
-  });
-
-  // Scroll-triggered animations
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.to(heroContent, {
-    y: 100,
-    opacity: 0,
-    ease: 'power2.in',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    }
-  });
-
-  gsap.to(heroBus, {
-    y: -100,
-    opacity: 0,
-    ease: 'power2.in',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true
-    }
-  });
-
-  // Intersection Observer for scroll indicator
-  const scrollIndicator = document.querySelector('.scroll-indicator');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        scrollIndicator.style.opacity = '0';
-      } else {
-        scrollIndicator.style.opacity = '1';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  observer.observe(document.querySelector('.hero'));
-
-  // Enhance buttons with hover effect
-  const buttons = document.querySelectorAll('.btn');
-  buttons.forEach(button => {
-    button.addEventListener('mouseenter', () => {
-      gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
-    });
-    button.addEventListener('mouseleave', () => {
-      gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
-    });
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
+    // Bus animation
     const busImage = document.getElementById('hero-bus');
     
     if (busImage) {
+        gsap.killTweensOf(busImage); // Kill any existing animations
         gsap.set(busImage, { x: '200%' }); // Start far off-screen right
         const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
         
@@ -235,4 +118,55 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.error("Bus image element not found");
     }
+
+    // Mobile-specific adjustments
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        // Adjust hero content animation for mobile
+        gsap.from('.hero-content > *', {
+            duration: 0.8,
+            y: 30,
+            opacity: 0,
+            stagger: 0.2,
+            ease: 'power2.out'
+        });
+    }
+
+    // Scroll-triggered animations
+    gsap.to('.hero-content', {
+        y: 100,
+        opacity: 0,
+        ease: 'power2.in',
+        scrollTrigger: {
+            trigger: '.hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true
+        }
+    });
+
+    // Intersection Observer for scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                scrollIndicator.style.opacity = '0';
+            } else {
+                scrollIndicator.style.opacity = '1';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    observer.observe(document.querySelector('.hero'));
+
+    // Enhance buttons with hover effect
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', () => {
+            gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
+        });
+        button.addEventListener('mouseleave', () => {
+            gsap.to(button, { scale: 1, duration: 0.3, ease: 'power2.out' });
+        });
+    });
 });
