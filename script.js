@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         busAnimation
             .to(busImage, {
-                duration: 4,
+                duration: 5,
                 x: '0%', // Move to its original position
                 ease: 'power1.inOut',
                 onStart: () => console.log("Bus entering")
@@ -110,8 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 onComplete: () => console.log("Bus paused")
             })
             .to(busImage, {
-                duration: 4,
-                x: '-200%', // Move far off-screen left
+                duration: 2,
+                x: '-300%', // Move far off-screen left
                 ease: 'power1.inOut',
                 onComplete: () => console.log("Bus exiting")
             });
