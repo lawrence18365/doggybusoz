@@ -229,101 +229,68 @@ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
-  /* Header styles */
   .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 10px 0;
+    padding: 10px 15px;
+    background: var(--primary-color);
   }
 
   .header .container {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
   }
 
   .logo h1 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    margin: 0;
   }
 
   .header-cta {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 100%;
   }
 
   .phone-number {
-    margin-bottom: 10px;
+    display: none; /* Hide phone number on mobile to save space */
   }
 
   .cta-button {
-    width: 80%;
-    text-align: center;
+    padding: 8px 12px;
+    font-size: 0.8rem;
   }
 
-  /* Hero section styles */
+  /* Adjust hero section to account for the new header */
   .hero {
-    padding-top: 120px; /* Increased to account for fixed header */
-    min-height: calc(100vh - 120px);
+    padding-top: 60px; /* Reduced to account for smaller fixed header */
+    min-height: calc(100vh - 60px);
   }
 
   .hero-container {
-    flex-direction: column;
-    text-align: center;
-    justify-content: flex-start;
-    padding-top: 2rem;
-  }
-
-  .hero-content, .hero-visual {
-    width: 100%;
-    padding: 0 1rem;
-  }
-
-  .hero-content {
-    margin-bottom: 2rem;
+    padding-top: 1rem;
   }
 
   .hero-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
   }
 
   .hero-description {
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-cta {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .btn {
-    width: 80%;
+    font-size: 0.9rem;
     margin-bottom: 1rem;
   }
 
-  .hero-visual {
-    height: 150px;
-    position: relative;
-    overflow: hidden;
-    margin-top: 10%;
+  .hero-cta .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
   }
 
   #hero-bus {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 150px;
-  }
-
-  .scroll-indicator {
-    bottom: 1rem;
+    width: 120px; /* Slightly reduced size */
   }
 }
 /* Services Section */
