@@ -229,68 +229,101 @@ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
+  /* Header styles */
   .header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 10px 15px;
-    background: var(--primary-color);
+    padding: 10px 0;
   }
 
   .header .container {
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
   }
 
   .logo h1 {
-    font-size: 1rem;
-    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
   }
 
   .header-cta {
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .phone-number {
-    display: none; /* Hide phone number on mobile to save space */
+    margin-bottom: 10px;
   }
 
   .cta-button {
-    padding: 8px 12px;
-    font-size: 0.8rem;
+    width: 80%;
+    text-align: center;
   }
 
-  /* Adjust hero section to account for the new header */
+  /* Hero section styles */
   .hero {
-    padding-top: 60px; /* Reduced to account for smaller fixed header */
-    min-height: calc(100vh - 60px);
+    padding-top: 120px; /* Increased to account for fixed header */
+    min-height: calc(100vh - 120px);
   }
 
   .hero-container {
-    padding-top: 1rem;
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+
+  .hero-content, .hero-visual {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .hero-content {
+    margin-bottom: 2rem;
   }
 
   .hero-title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .hero-description {
-    font-size: 0.9rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
   }
 
-  .hero-cta .btn {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  .hero-description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn {
+    width: 80%;
+    margin-bottom: 1rem;
+  }
+
+  .hero-visual {
+    height: 150px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10%;
   }
 
   #hero-bus {
-    width: 120px; /* Slightly reduced size */
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+  }
+
+  .scroll-indicator {
+    bottom: 1rem;
   }
 }
 /* Services Section */
