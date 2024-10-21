@@ -90,35 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.to(cursorCircle, { duration: 0.3, scale: 1, opacity: 1 });
     });
 
-    // Bus animation
-    const busImage = document.getElementById('hero-bus');
-    
-    if (busImage) {
-        gsap.killTweensOf(busImage); // Kill any existing animations
-        gsap.set(busImage, { x: '200%' }); // Start far off-screen right
-        const busAnimation = gsap.timeline({ repeat: -1, repeatDelay: 2 });
-        
-        busAnimation
-            .to(busImage, {
-                duration: 5,
-                x: '20%', // Move to its original position
-                ease: 'power1.inOut',
-                onStart: () => console.log("Bus entering")
-            })
-            .to(busImage, {
-                duration: 2,
-                onComplete: () => console.log("Bus paused")
-            })
-            .to(busImage, {
-                duration: 2,
-                x: '-300%', // Move far off-screen left
-                ease: 'power1.inOut',
-                onComplete: () => console.log("Bus exiting")
-            });
-    } else {
-        console.error("Bus image element not found");
-    }
-
     // Mobile-specific adjustments
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
