@@ -133,21 +133,6 @@ body {
   z-index: 2;
 }
 
-.hero-visual {
-  position: relative;
-  width: 50%;
-  height: 300px; /* Adjust as needed */
-  overflow: visible;
-}
-
-#hero-bus {
-  position: absolute;
-  width: 500px; /* Adjust size as needed */
-  max-width: 100%;
-  bottom: 0;
-  right: 0;
-}
-
 .hero-content {
   width: 50%;
   padding-right: 2rem;
