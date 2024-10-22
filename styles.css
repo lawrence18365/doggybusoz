@@ -48,6 +48,83 @@ body {
     /* Add dark shadow at the bottom */
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3); /* Adjust the values to your preference */
 }
+.top-bar {
+    background-color: var(--primary-green);
+    padding: 2px 0;  /* Reduced from 5px */
+    font-size: 13px; /* Slightly smaller font */
+    color: var(--white);
+    position: relative;
+    z-index: 1001;
+    height: 24px; /* Fixed height */
+    line-height: 24px; /* Vertically center text */
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.contact-info span {
+    margin-right: 15px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.contact-info i, 
+.social-links i {
+    margin-right: 5px;
+    font-size: 12px; /* Smaller icons */
+}
+
+.social-links a {
+    color: var(--white);
+    margin-left: 10px;
+    text-decoration: none;
+    transition: var(--transition-base);
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Adjust header positioning for new top bar height */
+#header {
+    position: fixed;
+    top: 24px; /* Match new top bar height */
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    padding: 10px 0;
+    transition: var(--transition-base);
+}
+
+#header.scrolled {
+    top: 0;
+}
+
+/* Adjust hero section to account for new header height */
+#hero {
+    padding-top: 84px; /* 24px (top bar) + header height */
+}
+
+@media (max-width: 768px) {
+    .contact-info span {
+        font-size: 12px;
+    }
+    
+    .top-bar {
+        height: 28px; /* Slightly taller on mobile if needed */
+        line-height: 28px;
+    }
+    
+    #header {
+        top: 28px;
+    }
+}
 
 .header--scrolled {
     background-color: rgba(26, 26, 26, 1);
